@@ -10,7 +10,7 @@ class RidesController < ApplicationController
 
   def index
     query = [params[:query]].join(' ').strip
-    if query.blank?
+    if !query.blank?
       @rides = Ride.search_by_location_and_date(query)
       # @rides = policy_scope(Ride).global_search(query)
     else
@@ -41,6 +41,14 @@ class RidesController < ApplicationController
   end
 
   def destroy
+  end
+
+  def remaining_seats
+    if passengers >= 1 && params[:reservation_passengers].to_i <= passengers
+      @ride.passengers = params[:reservation_passengers].to_i
+      @ride.save
+    end
+    redirect_to rides_path
   end
 
   private

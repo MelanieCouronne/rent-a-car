@@ -10,31 +10,67 @@
           <% if ride.photo.attached? %>
             <%= cl_image_tag("#{ride.photo.key}", crop: :fill, class: "card-photo") %>
           <% else %>
-            <%= image_tag 'https://images.unsplash.com/photo-1495055154266-57bbdeada43e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80', crop: :fill, class: "card-photo" %>
+            <%= image_tag 'https://i.picsum.photos/id/1071/3000/1996.jpg?hmac=rPo94Qr1Ffb657k6R7c9Zmfgs4wc4c1mNFz7ND23KnQ', crop: :fill, class: "card-photo" %>
           <% end %>
-          <%= link_to(
+          <%#= link_to(
             ride_path(ride),
             method: :delete, remote: true,
             data: { confirm: "Do you really want to delete this ride?" }
           ) do %>
-            <i class="fas fa-trash card-trash"></i>
-          <% end %>
+            <%# <i class="fas fa-trash card-trash"></i> %>
+          <%# end %>
         </div>
         <div class="card-body-part">
           <div class="card-body">
-          <% if ride.pickup_location.length > 30 %>
-            <h3 class="card-title m-0"><%= ride.pickup_location[0..30] + "..." %></h5>
-          <% else %>
-            <h3 class="card-title m-0"><%= ride.pickup_location %></h5>
-          <% end %>
+          <div class="d-flex justify-content-between">
+            <h5 class="card-title m-0"><%= ride.pickup_location %> - <%= ride.checkout_location %></h5>
+            <h5 class="card-title m-0"><%= ride.rental_rate %> €</h5>
           </div>
-          <% if ride.checkout_location.length > 60 %>
-            <p class="card-text"><%= ride.checkout_location[0..60] + "..." %></p>
-          <% else %>
-            <p class="card-text"><%= ride.checkout_location %></p>
-          <% end %>
+            <p class="card-title m-0"><%= ride.pickup_datetime.strftime("%a") %>. <%= ride.pickup_datetime.strftime("%m") %>/<%= ride.pickup_datetime.strftime("%y") %> - with <%= ride.user.first_name %></p>
+          </div>
+          <div class="card-button">
+            <div class="card-user-avatar">
+              <% if ride.user.photo.attached? %>
+                <%= cl_image_tag ride.user.photo.key, class: "avatar", height: 50, width: 50, crop: :fill %>
+              <% end %>
+            </div>
+            <p><i class="fas fa-star"></i> 4.6<%#= ride.user.rating %></p>
+
+
+
+          </div>
         </div>
       </div>
     <% end %>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-outline-dark detail" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Book
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Passengers</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="passengers-input" class="col-form-label">How many seats do you want to book?</label>
+                  <input type="text" class="form-control" id="passengers-input">
+                </div>
+              </form>
+            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <% if ride.passengers >= 1 %>
+              <%= link_to 'Book this ride', ride_reservations_path(ride, passengers: ride.passengers), class:"btn btn-primary"%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>

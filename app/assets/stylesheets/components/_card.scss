@@ -1,71 +1,74 @@
 .cards {
-  margin-top: 10px;
+  margin: 50px 50px;
 }
+.card-ride {
+    width: 290px;
+    height: 320px;
+    position: relative;
+    box-shadow: rgb(200, 200, 200) 0px 0px 20px;
+    border-radius: 5px;
 
-.card-topic {
-  align-items: flex-end;
-  background: white;
-  border-radius: 10px;
-  position: relative;
-  // margin: 10px;
-  height: 340px;
-  width: 100%;
-  border: rgb(215, 215, 215) solid 1px;
-  border-bottom: #e33636 solid 6px;
-  box-shadow: rgb(200, 200, 200) 2px 2px 8px;
-}
-
-.card-topi:hover {
-  background-color: black;
-}
-
-.card-topic:hover {
-  height: 360px;
-  transition: 0.3s;
-  opacity: .5;
-}
-
-
-.card-photo{
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  position: relative;
-}
-
-.btn-stripped{
-  background-color: transparent;
-  border: none;
-  padding: 0;
-}
-
-.card-trash {
+  .card-trash {
   position: absolute;
   right: 10px;
   top: 10px;
   color: white;
   text-shadow: rgb(80, 80, 80) 1px 1px 2px;
+  }
+}
+
+.card-photo{
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  position: relative;
 }
 
 .card-trash:hover{
-  color: #e33636;
+  color: #dd2d05;
 }
 
 .card-body-part{
   padding: 8px;
+  text-align: left;
 
   .card-body{
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  flex-direction: row;
   padding: 8px;
+
+  .card-user-avatar {
+
+  }
+
+  h5 {
+    padding-bottom: 10px;
+  }
+
+  p {
+    font-weight: lighter;
+  }
+
   }
 
   .card-text {
     padding-left: 12px;
     padding-right: 12px;
+  }
+
+  .card-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
+    padding: 8px;
+
+    p {
+      margin-bottom: 0;
+    }
   }
 }

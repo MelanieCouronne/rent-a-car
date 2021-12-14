@@ -1,0 +1,44 @@
+#profile-container {
+  height: 100vh;
+  width: 450px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+
+#btn-profile {
+  margin-bottom: 40px;
+  align-items: center;
+  display: flex;
+  margin-top: 50px;
+  margin-left: -290px;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+
+// input{
+//   background-color: red;
+//   border: 0;
+// }
+
+.photo-bloc{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+#name-user{
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+#email-user{
+  font-size: 30px;
+  color: red;
+}

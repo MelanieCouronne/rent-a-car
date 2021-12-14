@@ -2,14 +2,28 @@
 .banner {
   background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://i.picsum.photos/id/563/3872/2592.jpg?hmac=0IrQ3rYsIWh7eNXUWlmVPJCOZt1V2vgenFWm6a-2Pz0');
   background-size: cover;
-  height: 100vh;
   background-position: center;
-  // padding: 150px 0;
-  margin: 0px 0 80px 0;
+  height: 90vh;
+  margin: 0 0 0 0;
+  text-align: center;
+
+  .banner-chevron {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+    .fas {
+    font-size: 40px;
+    color: white;
+    }
+  }
+
 }
 
 .banner-search{
-  position: relative
+  position: relative;
+  height: 80vh;
 }
 
 .banner h1 {
