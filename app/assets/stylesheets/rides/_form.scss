@@ -1,0 +1,21 @@
+.container-form {
+  height: 800px;
+  margin-top: 90px;
+
+  .link-to {
+    color: #575756;
+    text-decoration: none;
+    opacity: 0.6;
+  }
+
+  .link-to:hover {
+    color: #575756;
+    text-decoration: none;
+    opacity: 1;
+  }
+
+  h1 {
+    color: black;
+    padding: 15px 15px 15px 15px;
+  }
+}

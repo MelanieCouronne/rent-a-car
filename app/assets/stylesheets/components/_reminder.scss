@@ -1,0 +1,47 @@
+.reminder-container {
+  width: 520px;
+  height: 250px;
+  margin: 20px;
+  box-shadow: rgb(200, 200, 200) 0px 0px 20px;
+  border-radius: 5px;
+}
+
+.reminder-informations {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px;
+
+  img {
+
+  }
+
+  .informations-text {
+
+    h5 {
+
+    }
+
+    p {
+
+    }
+
+  }
+
+  .informations-variables {
+
+  }
+
+}
+
+.reminder-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px;
+
+  img {
+
+  }
+
+}

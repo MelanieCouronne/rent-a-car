@@ -1,0 +1,38 @@
+<div class="container-form">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-xs-12 col-sm-8 col-md-6">
+    <div>
+      <h1>Share your ride!</h1>
+    </div>
+      <%= simple_form_for(ride) do |f| %>
+        <%-# ----------- Location form ----------- -%>
+        <div>
+          <div class="col-12">
+            <%= f.input :pickup_location, label: 'Pick-up location', placeholder: 'Bordeaux' %>
+          </div>
+          <div class="col-12">
+            <%= f.input :checkout_location, label: "Check-out location", placeholder: 'Paris' %>
+          </div>
+        </div>
+        <%-# ----------- Date form ----------- -%>
+        <div class="col-12">
+          <%= f.input :pickup_datetime, label: " Date (aaaa/mm/jj) - Heure (hh:mm)" %>
+        </div>
+        <%-# ----------- Car form ----------- -%>
+        <div class="col-12">
+          <%= f.input :car_brand, label: "Car brand", placeholder: 'Dacia' %>
+          <%= f.input :car_model, label: "Model", placeholder: 'Sandero' %>
+        </div>
+        <%-# ----------- Passenger & Rental rate form ----------- -%>
+        <div class="col-12">
+          <%= f.input :passengers, label: "Passengers" %>
+          <%= f.input :rental_rate, label: "Rental rate" %>
+        </div>
+        <div class="col-12 mt-4 d-flex justify-content-between align-items-center">
+        <%= f.button :submit, 'Publish your ride!', class: 'btn btn-outline-dark detail' %>
+      <% end %>
+        <%= link_to "Back to home page", rides_path, :class => "link-to" %>
+        </div>
+    </div>
+  </div>
+</div>

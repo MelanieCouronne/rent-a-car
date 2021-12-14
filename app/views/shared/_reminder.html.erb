@@ -1,0 +1,32 @@
+<%= reservations.each do |reservation| %>
+  <div class="reminder-container">
+    <div class="reminder-informations">
+      <img src="" alt="">
+      <div class="informations-text">
+        <h5><%= reservation.ride.pickup_location %></h5>
+        <p class="card-title m-0"><%= reservation.ride.pickup_datetime.strftime("%a") %>. <%= reservation.ride.pickup_datetime.strftime("%m") %>/<%= reservation.ride.pickup_datetime.strftime("%y") %></p>
+        <h5><%= reservation.ride.checkout_location %></h5>
+      </div>
+      <div class="informations-variables">
+        <h5><%= reservation.ride.rental_rate %></h5>
+        <h6><%= reservation.ride.passengers %></h6>
+      </div>
+    </div>
+    <div class="reminder-footer">
+      <img src="" alt="">
+      <div class="d-flex">
+        <p class="card-title m-0">with <%= reservation.ride.user.first_name %></p>
+        <p><i class="fas fa-star"></i> 4.6<%#= ride.user.rating %></p>
+      </div>
+      <%= link_to(
+        reservation_path(reservation),
+        method: :delete, remote: true,
+        class: "btn btn-outline-dark detail",
+        data: { confirm: "Do you want to cancel this reservation?" }
+        ) do %>
+          <i class="fas fa-trash card-trash">Cancel</i>
+        <% end %>
+    </div>
+  </div>
+
+<% end %>

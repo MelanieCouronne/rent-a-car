@@ -1,0 +1,49 @@
+
+.banner {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://i.picsum.photos/id/563/3872/2592.jpg?hmac=0IrQ3rYsIWh7eNXUWlmVPJCOZt1V2vgenFWm6a-2Pz0');
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+  margin: 0 0 0 0;
+  text-align: center;
+
+  .banner-chevron {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+    .fas {
+    font-size: 40px;
+    color: white;
+    }
+  }
+
+}
+
+.banner-search{
+  position: relative;
+  height: 80vh;
+}
+
+.banner h1 {
+  position: absolute;
+  top: 240px;
+  left: 160px;
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.banner p {
+  position: absolute;
+  top: 280px;
+  left: 160px;
+  margin: 0;
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
