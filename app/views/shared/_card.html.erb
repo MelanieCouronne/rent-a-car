@@ -1,0 +1,40 @@
+<div class="cards">
+  <% rides.each do |ride| %>
+    <%= button_to(
+      ride_path(ride),
+      method: :get,
+      class: "btn-stripped"
+    )do %>
+      <div class="card-ride">
+        <div class="card-photo-part">
+          <% if ride.photo.attached? %>
+            <%= cl_image_tag("#{ride.photo.key}", crop: :fill, class: "card-photo") %>
+          <% else %>
+            <%= image_tag 'https://images.unsplash.com/photo-1495055154266-57bbdeada43e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80', crop: :fill, class: "card-photo" %>
+          <% end %>
+          <%= link_to(
+            ride_path(ride),
+            method: :delete, remote: true,
+            data: { confirm: "Do you really want to delete this ride?" }
+          ) do %>
+            <i class="fas fa-trash card-trash"></i>
+          <% end %>
+        </div>
+        <div class="card-body-part">
+          <div class="card-body">
+          <% if ride.pickup_location.length > 30 %>
+            <h3 class="card-title m-0"><%= ride.pickup_location[0..30] + "..." %></h5>
+          <% else %>
+            <h3 class="card-title m-0"><%= ride.pickup_location %></h5>
+          <% end %>
+          </div>
+          <% if ride.checkout_location.length > 60 %>
+            <p class="card-text"><%= ride.checkout_location[0..60] + "..." %></p>
+          <% else %>
+            <p class="card-text"><%= ride.checkout_location %></p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

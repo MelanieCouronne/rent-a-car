@@ -5,7 +5,9 @@ Rails.application.routes.draw do
       }
   root to: 'pages#home'
 
-  resources :rides, only: [:new, :create, :destroy] do
+  get 'search', to: "rides#index"
+
+  resources :rides, only: [:index, :new, :create, :show, :destroy] do
     resources :reservations, only: [:new, :create, :destroy]
   end
 

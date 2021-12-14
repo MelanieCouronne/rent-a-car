@@ -11,3 +11,13 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+// @import "users/index";
+@import "rides/index";
+
+// General
+a:hover {
+    color: unset;
+    text-decoration: none;
+}
+
+input, button, submit { border:none; }
