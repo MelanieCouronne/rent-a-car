@@ -11,12 +11,16 @@
     </div>
   </div>
   <div class="reminder-footer">
-    <% if ride.user.photo.attached? %>
-      <%= cl_image_tag ride.user.photo.key, class: "avatar", height: 50, width: 50, crop: :fill %>
-    <% end %>
-    <div class="">
-      <p class="card-title m-0">with <%= ride.user.first_name %></p>
-      <p><i class="fas fa-star"></i> 4.6<%#= user.rating %></p>
+    <div class="reminder-user">
+      <% if ride.user.photo.attached? %>
+        <%= cl_image_tag ride.user.photo.key, class: "avatar", height: 50, width: 50, crop: :fill %>
+      <% else %>
+        <%= image_tag "logo.jpg", class: "avatar", height: 50, width: 50, crop: :fill %>
+      <% end %>
+      <div class="">
+        <p class="card-title m-0">with <%= ride.user.first_name %></p>
+        <p><i class="fas fa-star"></i> 4.6<%#= user.rating %></p>
+      </div>
     </div>
     <!-- Button trigger modal -->
   <button type="button" class="btn btn-outline-dark detail" data-bs-toggle="modal" data-bs-target="#exampleModal">
