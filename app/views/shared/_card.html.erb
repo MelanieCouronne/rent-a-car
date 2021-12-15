@@ -24,12 +24,14 @@
           <% end %>
         </div>
         <p><i class="fas fa-star"></i> 4.6<%#= ride.user.rating %></p>
+        <p>x/<%= ride.passengers %> Passengers left</p>
       </div>
+      <%= link_to 'Book this ride', new_ride_reservation_path(ride), class:"btn btn-primary"%>
     </div>
   </div>
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-outline-dark detail" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <%# <button type="button" class="btn btn-outline-dark detail" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Book
-  </button>
-  <%= render 'shared/modal_passengers', ride: ride %>
+  </button> %>
+  <%#= render 'shared/modal_passengers', ride: ride %>
 <% end %>
