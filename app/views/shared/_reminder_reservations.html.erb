@@ -13,7 +13,7 @@
   <div class="reminder-footer">
     <div class="reminder-user">
       <% if reservation.ride.user.photo.attached? %>
-        <%= cl_image_tag ride.user.photo.key, class: "avatar", height: 50, width: 50, crop: :fill %>
+        <%= cl_image_tag(reservation.ride.user.photo.key, class: "avatar", height: 50, width: 50, crop: :fill) %>
       <% else %>
         <%= image_tag "logo.jpg", class: "avatar", height: 50, width: 50, crop: :fill %>
       <% end %>

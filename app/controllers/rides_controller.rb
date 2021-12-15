@@ -1,5 +1,6 @@
 class RidesController < ApplicationController
-  before_action :set_ride, only: [:show, :destroy]
+  before_action :set_ride, only: [:show, :destroy, :remaining_seats]
+  before_action :remaining_seats
 
   def index
     query = [params[:query]].join(' ').strip
@@ -39,15 +40,20 @@ class RidesController < ApplicationController
     redirect_to my_rides_user_path(@user)
   end
 
-  def remaining_seats
-    if passengers >= 1 && params[:reservation_passengers].to_i <= passengers
-      @ride.passengers = params[:reservation_passengers].to_i
-      @ride.save
-    end
-    redirect_to rides_path
-  end
 
   private
+
+  def remaining_seats
+    results = 0
+    @rides = Ride.all
+    @rides.each do |ride|
+      ride.reservations.each do |reservation|
+        results += reservation.reservation_passengers
+        ride.passengers_update = ride.passengers - results
+        ride.save
+      end
+    end
+  end
 
   def set_ride
     @ride = Ride.find(params[:id])
