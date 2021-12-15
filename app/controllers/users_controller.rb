@@ -9,6 +9,11 @@ class UsersController < ApplicationController
     @rides = @user.rides
   end
 
+  def my_reservations
+    @user = current_user
+    @reservations = @user.reservations
+  end
+
   private
 
   def article_params

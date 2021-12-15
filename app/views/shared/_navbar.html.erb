@@ -24,8 +24,8 @@
         <% end %>
       </li>
       <li class="nav-item dropdown">
-        <% if current_user.photo.attached? %>
-          <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <% if current_user && current_user.photo.attached? %>
+          <%= cl_image_tag(current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
         <% else %>
           <%= image_tag "logo.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <% end %>
@@ -33,7 +33,7 @@
         <% if user_signed_in? %>
           <%= link_to "My profile",users_profile_path, class: "dropdown-item" %>
           <%= link_to("My rides", my_rides_user_path(current_user), class: "dropdown-item") %>
-          <%= link_to("My reservations", rides_path, class: "dropdown-item") %>
+          <%= link_to("My reservations", my_reservations_user_path(current_user), class: "dropdown-item") %>
           <%= link_to("Log out", destroy_user_session_path, method: :delete, class: "dropdown-item") %>
         <% else %>
           <%= link_to("Sign in", new_user_session_path, class: "dropdown-item") %>
