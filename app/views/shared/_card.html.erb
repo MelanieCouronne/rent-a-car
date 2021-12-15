@@ -14,7 +14,7 @@
         <h5 class="card-title m-0"><%= ride.rental_rate %> €</h5>
       </div>
         <p class="card-title m-0"><%= ride.pickup_datetime.strftime("%a") %>. <%= ride.pickup_datetime.strftime("%m") %>/<%= ride.pickup_datetime.strftime("%y") %> - with <%= ride.user.first_name %></p>
-        <p>x / <%= ride.passengers %> Passengers</p>
+        <p><%= ride.passengers_update %> / <%= ride.passengers %> Seat left</p>
       </div>
       <div class="card-button">
         <div class="card-user-avatar">
