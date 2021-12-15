@@ -33,9 +33,9 @@ class RidesController < ApplicationController
     @user = current_user
     @ride.user = @user
     if @ride.save
-      redirect_to ride_path(@ride)
+      redirect_to rides_path
     else
-      flash[:alert] = "This ride is not valid."
+      flash[:alert] = "This ride is not valid. Please try again."
       render :new
     end
   end

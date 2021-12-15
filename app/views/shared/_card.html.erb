@@ -3,7 +3,7 @@
     <%= button_to(
       ride_path(ride),
       method: :get,
-      class: "btn-stripped"
+      class: ""
     )do %>
       <div class="card-ride">
         <div class="card-photo-part">
@@ -12,13 +12,6 @@
           <% else %>
             <%= image_tag 'https://i.picsum.photos/id/1071/3000/1996.jpg?hmac=rPo94Qr1Ffb657k6R7c9Zmfgs4wc4c1mNFz7ND23KnQ', crop: :fill, class: "card-photo" %>
           <% end %>
-          <%#= link_to(
-            ride_path(ride),
-            method: :delete, remote: true,
-            data: { confirm: "Do you really want to delete this ride?" }
-          ) do %>
-            <%# <i class="fas fa-trash card-trash"></i> %>
-          <%# end %>
         </div>
         <div class="card-body-part">
           <div class="card-body">
@@ -35,42 +28,16 @@
               <% end %>
             </div>
             <p><i class="fas fa-star"></i> 4.6<%#= ride.user.rating %></p>
-
-
-
           </div>
         </div>
       </div>
-    <% end %>
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-outline-dark detail" data-bs-toggle="modal" data-bs-target="#exampleModal">
       Book
     </button>
+    <%= render 'shared/modal_passengers', ride: @ride %>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Passengers</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-              <form>
-                <div class="mb-3">
-                  <label for="passengers-input" class="col-form-label">How many seats do you want to book?</label>
-                  <input type="text" class="form-control" id="passengers-input">
-                </div>
-              </form>
-            </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <% if ride.passengers >= 1 %>
-              <%= link_to 'Book this ride', ride_reservations_path(ride, passengers: ride.passengers), class:"btn btn-primary"%>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
+
+    <% end %>
   <% end %>
 </div>
