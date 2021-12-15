@@ -7,14 +7,7 @@ class RidesController < ApplicationController
       @rides = Ride.all
     else
       @rides = Ride.search_by_location_and_date(query)
-      # @rides = policy_scope(Ride).global_search(query)
     end
-    # if params[:query].present?
-    #   @rides = Ride.where("title ILIKE ?", "%#{params[:query]}%")
-    # else
-    #   @rides = Ride.all
-    # end
-    @ride = Ride.new
   end
 
   def new
@@ -25,18 +18,25 @@ class RidesController < ApplicationController
     @ride = Ride.new(ride_params)
     @user = current_user
     @ride.user = @user
+
     if @ride.save
       redirect_to rides_path
     else
       flash[:alert] = "This ride is not valid. Please try again."
       render :new
     end
+
   end
 
   def show
   end
 
   def destroy
+    @user = current_user
+    @ride.user = @user
+    @ride.destroy
+    flash[:notice] = "Your ride is deleted"
+    redirect_to my_rides_user_path(@user)
   end
 
   def remaining_seats

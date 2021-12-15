@@ -27,6 +27,11 @@ class ReservationsController < ApplicationController
     redirect_to user_profile_path(@user)
   end
 
+  def user_reservations
+    @user = current_user
+    @reservations = Reservation.where(user: @user)
+  end
+
   private
 
   def reservation_params

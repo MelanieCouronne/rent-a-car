@@ -12,6 +12,12 @@ Rails.application.routes.draw do
     resources :reservations, only: [:new, :create, :show]
   end
 
+  resources :users, only: [] do
+    member do
+      get :my_rides
+    end
+  end
+
   resources :reservations, only: [:destroy]
 
 end
