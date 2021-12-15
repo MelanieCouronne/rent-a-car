@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
 
   resources :rides, only: [:index, :new, :create, :show, :destroy], shallow: true do
-    resources :reservations, only: [:new, :create]
+    resources :reservations, only: [:new, :create, :show]
   end
 
   resources :reservations, only: [:destroy]

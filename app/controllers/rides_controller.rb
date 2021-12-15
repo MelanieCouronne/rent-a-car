@@ -1,20 +1,13 @@
 class RidesController < ApplicationController
-  before_action :set_params, only: :destroy
-
-  include PgSearch::Model
-  pg_search_scope :search_by_location_and_date,
-    against: [ :pickup_location, :checkout_location, :pickup_datetime ],
-    using: {
-      tsearch: { prefix: true }
-    }
+  before_action :set_ride, only: [:show, :destroy]
 
   def index
     query = [params[:query]].join(' ').strip
-    if !query.blank?
+    if query.blank?
+      @rides = Ride.all
+    else
       @rides = Ride.search_by_location_and_date(query)
       # @rides = policy_scope(Ride).global_search(query)
-    else
-      @rides = Ride.all
     end
     # if params[:query].present?
     #   @rides = Ride.where("title ILIKE ?", "%#{params[:query]}%")
@@ -38,6 +31,9 @@ class RidesController < ApplicationController
       flash[:alert] = "This ride is not valid. Please try again."
       render :new
     end
+  end
+
+  def show
   end
 
   def destroy

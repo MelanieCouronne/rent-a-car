@@ -6,6 +6,13 @@
   border-radius: 5px;
 }
 
+.reminder-container-ride {
+  width: 520px;
+  height: 250px;
+  margin: 20px;
+  border-radius: 5px;
+}
+
 .reminder-informations {
   display: flex;
   justify-content: space-between;
@@ -17,19 +24,23 @@
   }
 
   .informations-text {
+    border-left: 3px solid black;
+    padding-left: 15px;
+    margin: 20px;
 
     h5 {
-
+      margin-bottom: 0;
     }
 
     p {
-
+      font-weight: lighter;
+      padding-bottom: 20px;
     }
 
   }
 
   .informations-variables {
-
+    margin: 20px;
   }
 
 }
@@ -39,6 +50,7 @@
   justify-content: space-between;
   align-items: flex-start;
   padding: 10px;
+  margin: 20px;
 
   img {
 

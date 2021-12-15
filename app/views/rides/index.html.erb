@@ -1,3 +1,7 @@
 <%= render 'shared/banner' %>
 
-<%= render 'shared/card', rides:@rides %>
+<div class="cards">
+  <% @rides.each do |ride| %>
+    <%= render 'shared/card', ride:ride %>
+ <% end %>
+</div>
