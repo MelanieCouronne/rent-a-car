@@ -14,7 +14,7 @@ class ReservationsController < ApplicationController
     @reservation.ride = @ride
     if @reservation.save
       flash[:notice] = "This reservation was successfully created!"
-      redirect_to my_reservations_user_path(current_user)
+      redirect_to my_reservations_user_path(@user)
     else
       flash[:alert] = "This reservation is not valid."
       redirect_to ride_path(@ride)
@@ -25,7 +25,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
     @reservation.destroy
     flash[:alert] = "This reservation is now delete."
-    redirect_to user_profile_path(@user)
+    redirect_to my_reservations_user_path(@user)
   end
 
   private
