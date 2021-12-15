@@ -1,0 +1,27 @@
+<div class="reminder-container-ride">
+  <div class="reminder-informations">
+    <div class="informations-text">
+      <h5><%= ride.pickup_location %></h5>
+      <p class="card-title m-0"><%= ride.pickup_datetime.strftime("%a") %>. <%= ride.pickup_datetime.strftime("%m") %>/<%= ride.pickup_datetime.strftime("%y") %></p>
+      <h5><%= ride.checkout_location %></h5>
+    </div>
+    <div class="informations-variables">
+      <h5><%= ride.rental_rate %> €</h5>
+      <h6><%= ride.passengers %> Passengers</h6>
+    </div>
+  </div>
+  <div class="reminder-footer">
+    <% if ride.user.photo.attached? %>
+      <%= cl_image_tag ride.user.photo.key, class: "avatar", height: 50, width: 50, crop: :fill %>
+    <% end %>
+    <div class="">
+      <p class="card-title m-0">with <%= ride.user.first_name %></p>
+      <p><i class="fas fa-star"></i> 4.6<%#= user.rating %></p>
+    </div>
+    <!-- Button trigger modal -->
+  <button type="button" class="btn btn-outline-dark detail" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Book
+  </button>
+  <%= render 'shared/modal_passengers', ride: ride %>
+  </div>
+</div>

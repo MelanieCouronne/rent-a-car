@@ -1,43 +1,33 @@
-<div class="cards">
-  <% rides.each do |ride| %>
-    <%= button_to(
-      ride_path(ride),
-      method: :get,
-      class: ""
-    )do %>
-      <div class="card-ride">
-        <div class="card-photo-part">
-          <% if ride.photo.attached? %>
-            <%= cl_image_tag("#{ride.photo.key}", crop: :fill, class: "card-photo") %>
-          <% else %>
-            <%= image_tag 'https://i.picsum.photos/id/1071/3000/1996.jpg?hmac=rPo94Qr1Ffb657k6R7c9Zmfgs4wc4c1mNFz7ND23KnQ', crop: :fill, class: "card-photo" %>
+<%= button_to(ride_path(ride), method: :get, class: "") do %>
+  <div class="card-ride">
+    <div class="card-photo-part">
+      <% if ride.photo.attached? %>
+        <%= cl_image_tag("#{ride.photo.key}", crop: :fill, class: "card-photo") %>
+      <% else %>
+        <%= image_tag 'https://i.picsum.photos/id/1071/3000/1996.jpg?hmac=rPo94Qr1Ffb657k6R7c9Zmfgs4wc4c1mNFz7ND23KnQ', crop: :fill, class: "card-photo" %>
+      <% end %>
+    </div>
+    <div class="card-body-part">
+      <div class="card-body">
+      <div class="d-flex justify-content-between">
+        <h5 class="card-title m-0"><%= ride.pickup_location %> - <%= ride.checkout_location %></h5>
+        <h5 class="card-title m-0"><%= ride.rental_rate %> €</h5>
+      </div>
+        <p class="card-title m-0"><%= ride.pickup_datetime.strftime("%a") %>. <%= ride.pickup_datetime.strftime("%m") %>/<%= ride.pickup_datetime.strftime("%y") %> - with <%= ride.user.first_name %></p>
+      </div>
+      <div class="card-button">
+        <div class="card-user-avatar">
+          <% if ride.user.photo.attached? %>
+            <%= cl_image_tag ride.user.photo.key, class: "avatar", height: 50, width: 50, crop: :fill %>
           <% end %>
         </div>
-        <div class="card-body-part">
-          <div class="card-body">
-          <div class="d-flex justify-content-between">
-            <h5 class="card-title m-0"><%= ride.pickup_location %> - <%= ride.checkout_location %></h5>
-            <h5 class="card-title m-0"><%= ride.rental_rate %> €</h5>
-          </div>
-            <p class="card-title m-0"><%= ride.pickup_datetime.strftime("%a") %>. <%= ride.pickup_datetime.strftime("%m") %>/<%= ride.pickup_datetime.strftime("%y") %> - with <%= ride.user.first_name %></p>
-          </div>
-          <div class="card-button">
-            <div class="card-user-avatar">
-              <% if ride.user.photo.attached? %>
-                <%= cl_image_tag ride.user.photo.key, class: "avatar", height: 50, width: 50, crop: :fill %>
-              <% end %>
-            </div>
-            <p><i class="fas fa-star"></i> 4.6<%#= ride.user.rating %></p>
-          </div>
-        </div>
+        <p><i class="fas fa-star"></i> 4.6<%#= ride.user.rating %></p>
       </div>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-outline-dark detail" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Book
-    </button>
-    <%= render 'shared/modal_passengers', ride: @ride %>
-
-
-    <% end %>
-  <% end %>
-</div>
+    </div>
+  </div>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-outline-dark detail" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Book
+  </button>
+  <%= render 'shared/modal_passengers', ride: ride %>
+<% end %>
