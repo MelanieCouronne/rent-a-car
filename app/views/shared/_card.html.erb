@@ -14,6 +14,7 @@
         <h5 class="card-title m-0"><%= ride.rental_rate %> €</h5>
       </div>
         <p class="card-title m-0"><%= ride.pickup_datetime.strftime("%a") %>. <%= ride.pickup_datetime.strftime("%m") %>/<%= ride.pickup_datetime.strftime("%y") %> - with <%= ride.user.first_name %></p>
+        <p>x / <%= ride.passengers %> Passengers</p>
       </div>
       <div class="card-button">
         <div class="card-user-avatar">
@@ -24,14 +25,8 @@
           <% end %>
         </div>
         <p><i class="fas fa-star"></i> 4.6<%#= ride.user.rating %></p>
-        <p>x/<%= ride.passengers %> Passengers left</p>
+        <%= link_to 'Book this ride', new_ride_reservation_path(ride), class:"btn btn-outline-dark detail"%>
       </div>
-      <%= link_to 'Book this ride', new_ride_reservation_path(ride), class:"btn btn-primary"%>
     </div>
   </div>
-  <!-- Button trigger modal -->
-  <%# <button type="button" class="btn btn-outline-dark detail" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Book
-  </button> %>
-  <%#= render 'shared/modal_passengers', ride: ride %>
 <% end %>
