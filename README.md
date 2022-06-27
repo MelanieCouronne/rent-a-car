@@ -1,9 +1,10 @@
 This web app is build with Rails 6, CSS/HTML and JS.
 
+`
+TDD with RSpec and Should Matchers to build a safety net against errors! ☔️
+`
+
 The relational DB is managed with PostgreSQL (and not filled with seeds 🌱 for now).
-
-
-> TDD with RSpec and Should Matchers to build a safety net against errors! ☂️
 
 
 
