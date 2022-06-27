@@ -4,11 +4,11 @@ require 'rails_helper'
 RSpec.describe Ride, type: :model do
   #refacto
 
-  # new_user = User.create!(email:"melanie@gmail.com", password: "azerty")
-  melanie = User.find_by(email:"melanie@gmail.com")
+  new_user = User.create(email:"jane@doe.com", password: "azerty")
+  # melanie = User.find_by(email:"melanie@gmail.com")
 
   subject {
-    described_class.new(user_id: melanie.id,
+    described_class.new(user_id: new_user.id,
                         pickup_location: "Bordeaux",
                         checkout_location: "Lyon",
                         car_model: "Sandero III",
