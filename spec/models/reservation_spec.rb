@@ -14,17 +14,24 @@ RSpec.describe Reservation, type: :model do
     described_class.new(user_id: 10, ride_id: ride.id)
   }
 
-  it "is valid with valid attributes" do
-    expect(subject).to be_valid
+  context "Associations" do
+    it { should belong_to(:ride).without_validating_presence}
+    it { should belong_to(:user).without_validating_presence}
   end
 
-  it "is not valid without user id" do
-    subject.user_id = nil
-    expect(subject).to_not be_valid
-  end
+  context "Validations" do
+    it "is valid with valid attributes" do
+      expect(subject).to be_valid
+    end
 
-  it "is not valid without ride id" do
-    subject.ride_id = nil
-    expect(subject).to_not be_valid
+    it "is not valid without user id" do
+      subject.user_id = nil
+      expect(subject).to_not be_valid
+    end
+
+    it "is not valid without ride id" do
+      subject.ride_id = nil
+      expect(subject).to_not be_valid
+    end
   end
 end

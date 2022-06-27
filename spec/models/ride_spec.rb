@@ -19,6 +19,7 @@ RSpec.describe Ride, type: :model do
   context "Associations" do
     it { should belong_to(:user).without_validating_presence}
     it { should have_many(:reservations).without_validating_presence}
+    it { should have_one_attached(:photo)}
   end
 
   context "Validations" do
