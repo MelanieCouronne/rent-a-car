@@ -12,17 +12,17 @@
     </div>
     <div class="reminder-footer">
       <div class="reminder-user">
-        <p class="card-title m-0">Your passengers:</p>
-        <div class="">
-          <% ride.reservations.each do |reservation| %>
-            <p><%= reservation.user.first_name %></p>
-          <% end %>
-          <% if ride.user.photo.attached? %>
-            <%= cl_image_tag ride.user.photo.key, class: "avatar", height: 50, width: 50, crop: :fill %>
-          <% else %>
-            <%= image_tag "logo.jpg", class: "avatar", height: 50, width: 50, crop: :fill %>
-          <% end %>
-        </div>
+        <p class="card-title m-0">Your passengers: </p>
+        <% ride.reservations.each do |reservation| %>
+          <div class="d-flex justify-content-center align-items-center">
+            <% if ride.user.photo.attached? %>
+              <%= cl_image_tag ride.user.photo.key, class: "avatar", height: 50, width: 50, crop: :fill %>
+            <% else %>
+              <%= image_tag "logo.jpg", class: "avatar", height: 50, width: 50, crop: :fill %>
+            <% end %>
+              <p><%= reservation.user.first_name %></p>
+            <% end %>
+          </div>
       </div>
       <%= link_to(ride_path(ride),
         method: :delete, remote: true,
